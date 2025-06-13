@@ -2,11 +2,11 @@ import Container from "@/components/Container";
 import Header from "@/components/Header";
 import PostsList from "@/components/PostsList";
 import SpinLoader from "@/components/SpinLoader";
-import Link from "next/link";
-import Image from "next/image";
+
 import { Suspense } from "react";
 import clsx from "clsx";
 import PostHeading from "@/components/PostHeading";
+import PostCoverImage from "@/components/PostCoverImage";
 
 export default async function HomePage() {
   return (
@@ -22,16 +22,18 @@ export default async function HomePage() {
           "group"
         )}
       >
-        <Link href="#" className="w-full h-full overflow-hidden rounded-md">
-          <Image
-            src="/images/bryen_0.png"
-            width={1200}
-            height={720}
-            alt={"Título do post"}
-            className="group-hover:scale-105 transition w-full h-full object-cover object-center"
-            priority
-          />
-        </Link>
+        <PostCoverImage
+          imageProps={{
+            src: "/images/bryen_6.png",
+            width: 1200,
+            height: 720,
+            alt: "Alt da imagem",
+            priority: true,
+          }}
+          linkProps={{
+            href: "/post/algumacoisa",
+          }}
+        ></PostCoverImage>
         <div className="flex flex-col gap-4 sm:justify-center">
           <time className="text-slate-600 block text-sm" dateTime="2025-04-20">
             20/04/2025 10:00
