@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import PostCoverImage from "../PostCoverImage";
-import PostHeading from "../PostHeading";
+import PostSummary from "../PostSummary";
 
 export default function PostFeatured() {
   const slug = "qualquer";
@@ -18,7 +18,7 @@ export default function PostFeatured() {
     >
       <PostCoverImage
         imageProps={{
-          src: "/images/bryen_6.png",
+          src: "/images/bryen_0.png",
           width: 1200,
           height: 720,
           alt: "Alt da imagem",
@@ -28,18 +28,15 @@ export default function PostFeatured() {
           href: postLink,
         }}
       ></PostCoverImage>
-      <div className="flex flex-col gap-4 sm:justify-center">
-        <time className="text-slate-600 block text-sm" dateTime="2025-04-20">
-          20/04/2025 10:00
-        </time>
-        <PostHeading url={postLink} as={"h1"}>
-          Lorem ipsum, dolor sit amet consectetur
-        </PostHeading>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae
-          possimus voluptatibus in sed reprehenderit ut, sint architecto ducimus
-        </p>
-      </div>
+      <PostSummary
+        postLink={postLink}
+        postHeading="h2"
+        createdAt={"2025-02-22T04:32:54"}
+        excerpt={
+          "Next.js é um framework de desenvolvimento criado para facilitar a construção de aplicações web modernas usando React."
+        }
+        title={"Como manter o foco no mundo digital"}
+      ></PostSummary>
     </section>
   );
 }
