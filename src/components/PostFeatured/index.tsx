@@ -1,10 +1,12 @@
 import clsx from "clsx";
 import PostCoverImage from "../PostCoverImage";
 import PostSummary from "../PostSummary";
+import { findAllPublicPosts } from "@/lib/post/queries";
 
-export default function PostFeatured() {
-  const slug = "qualquer";
-  const postLink = `/post/${slug}`;
+export default async function PostFeatured() {
+  const posts = await findAllPublicPosts();
+  const post = posts[0];
+  const postLink = `/post/${post.slug}`;
   return (
     <section
       className={clsx(
@@ -18,10 +20,10 @@ export default function PostFeatured() {
     >
       <PostCoverImage
         imageProps={{
-          src: "/images/bryen_0.png",
+          src: post.coverImageUrl,
           width: 1200,
           height: 720,
-          alt: "Alt da imagem",
+          alt: post.title,
           priority: true,
         }}
         linkProps={{
@@ -31,11 +33,9 @@ export default function PostFeatured() {
       <PostSummary
         postLink={postLink}
         postHeading="h2"
-        createdAt={"2025-02-22T04:32:54"}
-        excerpt={
-          "Next.js é um framework de desenvolvimento criado para facilitar a construção de aplicações web modernas usando React."
-        }
-        title={"Como manter o foco no mundo digital"}
+        createdAt={post.createdAt}
+        excerpt={post.excerpt}
+        title={post.title}
       ></PostSummary>
     </section>
   );

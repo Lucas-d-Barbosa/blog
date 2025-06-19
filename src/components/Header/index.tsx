@@ -2,7 +2,6 @@ import { clsx } from "clsx";
 import Link from "next/link";
 
 export default function Header() {
-  console.log("Header");
   return (
     <header>
       <h1
